@@ -1,0 +1,17 @@
+/*regole generiche-------------------------------------------------------*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    background-color: rgb(202, 207, 204);
+    height: 100vh;
+}
+
+.green {
+    background-color: #00BFA5;
+    height: 20vh;
+}
