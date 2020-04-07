@@ -72,6 +72,10 @@
     .borderBottom {
         border-bottom: 1px solid #D7DBD7;
     }
+    
+    .hidden {
+        display: none;
+    }
     /*-----------REGOLE MAIN--------------------------------*/
     
     .container {
