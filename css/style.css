@@ -94,14 +94,8 @@
     
     .nav-sx {
         width: 300px;
-        height: 100%;
         border-right: 1px solid gray;
         background-color: #ffffff;
-    }
-    
-    #conversation {
-        height: 100%;
-        overflow-y: auto;
     }
     
     .notification {
@@ -155,6 +149,11 @@
         width: 100%;
     }
     
+    .chat-list {
+        overflow-y: auto;
+        height: calc(100% - 180px);
+    }
+    
     .footer {
         height: 60px;
         position: absolute;
@@ -176,8 +175,9 @@
     }
     
     .messagesContainer {
-        background-image: url("img/Sfondo.jpg");
+        background-image: url("../img/Sfondo.jpg");
         height: calc(100% - 70px - 60px);
+        overflow-y: auto;
     }
     
     ul {
@@ -209,4 +209,10 @@
     
     .sendMsg p {
         min-height: 0px;
+    }
+    
+    @media screen and (min-height: 600px) {
+        .chat-list {
+            overflow-y: hidden;
+        }
     }
