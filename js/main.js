@@ -1,24 +1,62 @@
 $(document).ready(function() {
+    var contatc = $('.chat-list .notification');
+    var planeIcons = $('.fa-telegram-plane');
+    var microphoneIcons = $('.fa-microphone');
+    var msgInput = $('.footer input');
+    var searchInput = $('.search input');
+
     var msg = "";
 
 
-    $('.footer input').click(
+    //status hover chat-list-------------------------------
+    contatc.mouseenter(
         function() {
-            $('.fa-microphone').addClass('hidden');
-            $('.fa-telegram-plane').removeClass('hidden');
+            $(this).addClass('active');
+        }
+    );
+    contatc.mouseleave(
+        function() {
+            $(this).removeClass('active');
         }
     );
 
-    $('.fa-telegram-plane').click(
+    //gestione icone invio msg-------------------------------
+    msgInput.click(
         function() {
-            msg = $('.footer input').val();
-            console.log(msg);
-            $('ul').append("<li class='sendMsg clear'><p>" + msg + "</p><p class='littleFont'>12:45</p></li>");
-            $('.footer input').val("");
-            $('.fa-microphone').removeClass('hidden');
-            $('.fa-telegram-plane').addClass('hidden');
+            microphoneIcons.addClass('hidden');
+            planeIcons.removeClass('hidden');
         }
     );
+
+
+    //gestione invio msg-------------------------------
+    planeIcons.click(
+        function() {
+            msg = msgInput.val();
+            sendMessage(msg);
+            setTimeout(receptMessage, 1000)
+        }
+    );
+
+    //gestione ricerca contatti-------------------------------
+
+
+
+    //------------------------FUNZIONI-------------------------
+    //funzione invio messaggi
+    function sendMessage(message) {
+        $('ul').append("<li class='sendMsg clear'><p>" + msg + "</p><p class='littleFont'>12:45</p></li>");
+        msgInput.val("");
+        microphoneIcons.removeClass('hidden');
+        planeIcons.addClass('hidden');
+    };
+
+    //funzione x ricezione messaggi
+    function receptMessage() {
+        $('ul').append("<li class='receiptMsg clear'><p>ok</p><p class='littleFont'>12:45</p></li>");
+
+    }
+
 
 
 
