@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var contatc = $('.chat-list .notification');
+    var contact = $('.chat-list .notification');
     var planeIcons = $('.fa-telegram-plane');
     var microphoneIcons = $('.fa-microphone');
     var msgInput = $('.footer input');
@@ -9,12 +9,12 @@ $(document).ready(function() {
 
 
     //status hover chat-list-------------------------------
-    contatc.mouseenter(
+    contact.mouseenter(
         function() {
             $(this).addClass('active');
         }
     );
-    contatc.mouseleave(
+    contact.mouseleave(
         function() {
             $(this).removeClass('active');
         }
@@ -39,9 +39,22 @@ $(document).ready(function() {
     );
 
     //gestione ricerca contatti-------------------------------
+    searchInput.keyup(
+        function() {
+            var userText = searchInput.val().toUpperCase();
+            contact.each(
+                function() {
+                    var name = $(this).find('span.fontBold').text().toUpperCase();
+                    if (name.includes(userText)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                }
+            )
 
-
-
+        }
+    );
     //------------------------FUNZIONI-------------------------
     //funzione invio messaggi
     function sendMessage(message) {
@@ -54,7 +67,6 @@ $(document).ready(function() {
     //funzione x ricezione messaggi
     function receptMessage() {
         $('ul').append("<li class='receiptMsg clear'><p>ok</p><p class='littleFont'>12:45</p></li>");
-
     }
 
 
