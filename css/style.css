@@ -218,9 +218,3 @@
         padding: 10px;
         border-radius: 5px;
     }
-    
-    @media screen and (min-height: 600px) {
-        .chat-list {
-            overflow-y: hidden;
-        }
-    }
