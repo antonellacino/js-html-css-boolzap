@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var contact = $('.chat-list .notification');
+    var contactList = $('.chat-list .notification');
     var planeIcons = $('.fa-telegram-plane');
     var microphoneIcons = $('.fa-microphone');
     var msgInput = $('.footer input');
@@ -9,14 +9,14 @@ $(document).ready(function() {
 
 
     //status hover chat-list-------------------------------
-    contact.mouseenter(
+    contactList.mouseenter(
         function() {
-            $(this).addClass('active');
+            $(this).addClass('hover');
         }
     );
-    contact.mouseleave(
+    contactList.mouseleave(
         function() {
-            $(this).removeClass('active');
+            $(this).removeClass('hover');
         }
     );
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
     searchInput.keyup(
         function() {
             var userText = searchInput.val().toUpperCase();
-            contact.each(
+            contactList.each(
                 function() {
                     var name = $(this).find('span.fontBold').text().toUpperCase();
                     if (name.includes(userText)) {
@@ -55,6 +55,25 @@ $(document).ready(function() {
 
         }
     );
+
+    contactList.click(
+        function() {
+            var indexContact = $(this).index();
+            console.log(indexContact);
+            contactList.removeClass('active');
+            $(this).addClass('active');
+            $('.chat').addClass('hidden');
+            console.log($('.chat').eq(indexContact).removeClass('hidden'));
+
+        }
+    );
+
+
+
+
+
+
+
     //------------------------FUNZIONI-------------------------
     //funzione invio messaggi
     function sendMessage(message) {
