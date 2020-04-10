@@ -218,3 +218,27 @@
         padding: 10px;
         border-radius: 5px;
     }
+    
+    .messagesContainer li:hover i {
+        display: inline-block;
+    }
+    
+    .positionRelative {
+        position: relative;
+    }
+    
+    .delete {
+        width: 160px;
+        position: absolute;
+        top: 55px;
+        left: 170px;
+        background-color: white;
+        border-radius: 5px;
+        text-align: center;
+        padding: 5px;
+    }
+    
+    .delete a {
+        text-decoration: none;
+        color: gray;
+    }

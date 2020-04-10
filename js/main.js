@@ -35,18 +35,16 @@ $(document).ready(function() {
         function() {
             msg = msgInput.val();
             sendMessage(msg);
-            setTimeout(receptMessage, 1000)
         }
     );
 
-    // msgInput.keypress(function(e) {
-    //     var key = e.which;
-    //     if (key == 13) {
-    //         msg = msgInput.val();
-    //         sendMessage(msg);
-    //         setTimeout(receptMessage, 1000);
-    //     }
-    // });
+    msgInput.keypress(function(e) {
+        var key = e.which;
+        if (key == 13) {
+            msg = msgInput.val();
+            sendMessage(msg);
+        }
+    });
 
     //gestione ricerca contatti-------------------------------
     searchInput.keyup(
@@ -77,25 +75,29 @@ $(document).ready(function() {
         }
     );
 
+    $('.messagesContainer').on("click", "i",
+        function() {
+            $(this).parents().hide;
 
-
-
-
+        }
+    )
 
 
     //------------------------FUNZIONI-------------------------
     //funzione invio messaggi
     function sendMessage(message) {
-        $('.view ul').append("<li class='sendMsg clear'><p>" + msg + "</p><p class='littleFont'>12:45</p></li>");
+        $('.view ul').append("<li class='sendMsg clear'><p>" + msg + "<i class='fas fa-angle-down icons hidden'></i></p><p class='littleFont'>12:45</p></li>");
         msgInput.val("");
         microphoneIcons.removeClass('hidden');
         planeIcons.addClass('hidden');
+        setTimeout(receptMessage, 1000);
     };
 
     //funzione x ricezione messaggi
     function receptMessage() {
-        $('.view ul').append("<li class='receiptMsg clear'><p>ok</p><p class='littleFont'>12:45</p></li>");
+        $('.view ul').append("<li class='receiptMsg clear'><p>ok<i class='fas fa-angle-down icons hidden'></i></p><p class='littleFont'>12:45</p></li>");
     }
+
 
 
 
