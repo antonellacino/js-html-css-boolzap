@@ -79,6 +79,10 @@
     .hidden {
         display: none;
     }
+    
+    .visibility {
+        visibility: hidden;
+    }
     /*-----------REGOLE MAIN--------------------------------*/
     
     .container {
@@ -194,10 +198,6 @@
         list-style: none;
     }
     
-    ul li {
-        margin-top: 10px;
-    }
-    
     .clear {
         display: table;
         clear: both;
@@ -209,6 +209,7 @@
         background-color: #EDEDED;
         padding: 10px;
         border-radius: 5px;
+        margin-bottom: 5PX;
     }
     
     .sendMsg {
@@ -220,7 +221,7 @@
     }
     
     .messagesContainer li:hover i {
-        display: inline-block;
+        visibility: visible;
     }
     
     .positionRelative {
@@ -230,8 +231,8 @@
     .delete {
         width: 160px;
         position: absolute;
-        top: 55px;
-        left: 170px;
+        top: 0;
+        left: calc(100% + 10px);
         background-color: white;
         border-radius: 5px;
         text-align: center;
@@ -241,4 +242,9 @@
     .delete a {
         text-decoration: none;
         color: gray;
+    }
+    
+    .deleteRight {
+        right: calc(100% + 10px);
+        left: unset;
     }
