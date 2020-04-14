@@ -29,12 +29,12 @@ $(document).ready(function() {
         }
     );
 
-
     //gestione invio msg-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
     planeIcons.click(
         function() {
             msg = msgInput.val();
             sendMessage(msg);
+            $('span.access').text('Sta scrivendo....');
         }
     );
 
@@ -43,6 +43,7 @@ $(document).ready(function() {
         if (key == 13) {
             msg = msgInput.val();
             sendMessage(msg);
+            $('span.access').text('Sta scrivendo....');
         }
     });
 
@@ -65,7 +66,7 @@ $(document).ready(function() {
 
         }
     );
-    //Associo il titolare della condersazione con la propria chat
+    //Associo al nome della conversazione la propria chat
     contactList.click(
         function() {
             var indexContact = $(this).index();
@@ -96,20 +97,31 @@ $(document).ready(function() {
     //------------------------FUNZIONI-------------------------
     //funzione invio messaggi
     function sendMessage(message) {
-        $('.view ul.messagesList').append("<li class='sendMsg clear positionRelative msg'><p>" + msg + "<i class='fas fa-angle-down icons visibility'></i></p><p class='littleFont'>12:45</p><ul class='delete deleteRight hidden positionRight'><li><a href='#'>Info messaggio</a></li><li><a href='#' class='remove'>Cancella Messaggio</a></li></ul></li>");
+        var time = takeTime();
+        $('.view ul.messagesList').append("<li class='sendMsg clear positionRelative msg'><p>" + msg + "<i class='fas fa-angle-down icons visibility'></i></p><p class='littleFont'>" + time + "</p><ul class='delete deleteRight hidden positionRight'><li><a href='#'>Info messaggio</a></li><li><a href='#' class='remove'>Cancella Messaggio</a></li></ul></li>");
         msgInput.val("");
         microphoneIcons.removeClass('hidden');
         planeIcons.addClass('hidden');
         setTimeout(receiptMessage, 1000);
+
     };
 
     //funzione x ricezione messaggi
     function receiptMessage() {
-        $('.view ul.messagesList').append("<li class='receiptMsg clear positionRelative msg'><p>ok<i class='fas fa-angle-down icons visibility'></i></p><p class='littleFont'>12:45</p><ul class='delete hidden'><li><a href='#'>Info messaggio</a></li><li><a href='#' class='remove'>Cancella Messaggio</a></li></ul></li>");
+        var time = takeTime();
+        $('.view ul.messagesList').append("<li class='receiptMsg clear positionRelative msg'><p>ok<i class='fas fa-angle-down icons visibility'></i></p><p class='littleFont'>" + time + "</p><ul class='delete hidden'><li><a href='#'>Info messaggio</a></li><li><a href='#' class='remove'>Cancella Messaggio</a></li></ul></li>");
+        $('span.access').html("Ultimo accesso alle ore: " + time);
+        contactList.filter('.active').find('div.log').text(time);
     }
-
-
-
-
-
+    //funzione time
+    function takeTime() {
+        var data = new Date();
+        var houres = data.getHours();
+        var minutes = data.getMinutes();
+        if (minutes < 10) {
+            var time = houres + ": 0" + minutes;
+        }
+        var time = houres + ":" + minutes;
+        return time;
+    }
 });
