@@ -393,7 +393,21 @@
             </div>
         </div>
         <!--fine div contenitore-------------------------->
+
+
+        <!--TEMPLATE-------------------------->
+        <script id="message-template" type="text/x-handlebars-template">
+            <li class='{{sendReceipt}} clear positionRelative msg'>
+                <p>{{msg}}<i class='fas fa-angle-down icons visibility'></i></p>
+                <p class='littleFont'>{{"time"}}</p>
+                <ul class='delete {{deleteRight}} hidden positionRight'>
+                    <li><a href='#'>Info messaggio</a></li>
+                    <li><a href='#' class='remove'>Cancella Messaggio</a></li>
+                </ul>
+            </li>
+        </script>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
 </body>
